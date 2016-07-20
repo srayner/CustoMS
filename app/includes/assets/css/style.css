@@ -1,0 +1,84 @@
+/* Global Styling */
+body{
+	 text-align: center;
+	 max-width: 1200px; 
+	 margin: 0 auto;
+}
+
+img{
+	max-width: 100%;
+}
+
+/* Dashboard Styling */
+.list-group-item{
+	margin-bottom: 24px;
+}
+
+/* Post Styling*/
+.post-title{
+	text-transform: uppercase; 
+	text-decoration: underline;
+}
+
+.byline{
+	font-style: italic;
+	font-size: 1.2em;
+}
+
+.post-image{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.post-content{
+	font-size: 1.6em;
+	word-break: break-all;
+	
+} .post-content a.goto{
+	font-size: 0.8em;
+}
+
+/* Tables and Forms */
+table{
+	margin-top: 30px;
+}
+
+form{
+	display: inline-block;
+	text-align: left;
+	margin-top: 30px;
+} #comment-creation form, form#contact, form#post{
+	display: block;
+}
+
+/* Comments */
+.comment{
+	background: #5d5d5d;
+	color: #fefefe;
+	padding: 20px;
+	margin-bottom: 5px;
+	border-radius: 7px;
+	font-size: 1.2em;
+} .comment-title strong{
+	 text-transform: uppercase;
+} #comments, #comments a{
+	color: #fefefe;
+} #comments a{
+	text-decoration: underline;
+} #comments a.btn{
+	text-decoration: none;
+}
+
+/* Password Generator */
+#password_generated{
+	font-size: 3em;
+	color: red;
+	word-break: break-all;
+}
+
+/* Footer */
+footer{
+	font-size: 1.1em; 
+	text-align: center;
+	margin-top: 30px;
+}

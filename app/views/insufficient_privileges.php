@@ -1,0 +1,2 @@
+<?php if(!defined('INCLUDE_CHECK')) die('You probably shouldn\'t be looking around in here..'); ?>
+<div class="alert alert-warning" role="alert">You do not have sufficient privileges to view this page.</div>

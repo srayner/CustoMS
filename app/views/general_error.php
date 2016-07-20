@@ -1,0 +1,2 @@
+<?php if(!defined('INCLUDE_CHECK')) die('You probably shouldn\'t be looking around in here..'); ?>
+<div class="alert alert-danger" role="alert">There was an error with your action. Please try again.</div>
