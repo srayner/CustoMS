@@ -745,39 +745,36 @@
 
 		}
 
-		function doGetPostsByCategory(){
+            function doGetPostsByCategory() {
 
-			$this->db 	= new Database();
-            $this->db 	= $this->db->connect();
+                $this->db 	= new Database();
+                $this->db 	= $this->db->connect();
 
-            $error   	= array();
+                $error   	= array();
+           
+                $results	= array();
+
+                $category 	= $_GET['category'];
+
+                $query_get_post_details_for_published_posts_by_category = $this->db->prepare("SELECT P.post_id, P.title, P.username, P.email, P.post, P.image, P.date_post_created, P.date_post_last_modified, C.post_id FROM posts P, categories C WHERE P.post_id = C.post_id AND C.category = ? AND P.published = 1");
+                $query_get_post_details_for_published_posts_by_category->bindParam(1, $category);
+                $query_get_post_details_for_published_posts_by_category->execute();
+
+                while($query_get_post_details_for_published_posts_by_category_results = $query_get_post_details_for_published_posts_by_category->fetch(PDO::FETCH_ASSOC)){
+                    $results[] = $query_get_post_details_for_published_posts_by_category_results;
+                }
             
-			$results	= array();
-
-            $category 	= $_GET['category'];
-
-            $query_get_post_details_for_published_posts_by_category = $this->db->prepare("SELECT P.post_id, P.title, P.username, P.email, P.post, P.image, P.date_post_created, P.date_post_last_modified, C.post_id FROM posts P, categories C WHERE P.post_id = C.post_id AND C.category = ? AND P.published = 1");
-            $query_get_post_details_for_published_posts_by_category->bindParam(1, $category);
-            $query_get_post_details_for_published_posts_by_category->execute();
-
-            while($query_get_post_details_for_published_posts_by_category_results = $query_get_post_details_for_published_posts_by_category->fetch(PDO::FETCH_ASSOC)){
-				$results[] = $query_get_post_details_for_published_posts_by_category_results;
-			}
-
-			if(count($results) == 0){
-				$error[] = "There are no posts to view for this category.";
-				$_SESSION['posts_for_viewing_by_categories_results'] = null;
-				$_SESSION['current_category'] = null;
-			} else{
-				$_SESSION['posts_for_viewing_by_categories_results'] = $results;
-				$_SESSION['current_category'] = $category;
-			}
-
-			if(count($error) != 0){
-				$_SESSION['msg']['posts_viewing_by_category-error'] = implode('<br />', $error);
-			}
-
-		}
+                $_SESSION['posts_for_viewing_by_categories_results'] = $results;
+                $_SESSION['current_category'] = $category;
+                
+                if(count($results) == 0) {
+                    $error[] = "There are no posts to view for this category.";
+                }    
+                
+                if(count($error) != 0){
+                    $_SESSION['msg']['posts_viewing_by_category-error'] = implode('<br />', $error);
+                }
+            }
 
 		function doGetPostsByKeyword(){
 
